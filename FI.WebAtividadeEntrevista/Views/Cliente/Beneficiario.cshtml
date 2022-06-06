@@ -1,0 +1,48 @@
+﻿@using WebAtividadeEntrevista.Models
+@model List<BeneficiariosModel>
+<div class="row">
+    <div class="col-md-5">
+        <div class="form-group">
+            <label for="CPFBeneficiario">CPF:</label>
+            <input required="required" type="text" class="form-control" id="CPFBeneficiario" name="CPFBeneficiario" placeholder="Ex.: 123.456.789-09" maxlength="14">
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="form-group">
+            <label for="NomeBeneficiario">Nome:</label>
+            <input required="required" type="text" class="form-control" id="NomeBeneficiario" name="NomeBeneficiario" placeholder="Ex.: João da Silva" maxlength="255">
+        </div>
+    </div>
+    <div class="col-md-2" style="margin-top: 26px">
+        <div class="form-group">
+            <button type="button" id="IncluirBeneficiarioGrid" style="padding: 6px 12px" class="btn btn-success">Incluir</button>
+        </div>
+    </div>
+</div>
+<div class="row col-md-12">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>CPF</th>
+                <th>Nome</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="DadosBeneficiarios">
+            @if (Model.Count > 0)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="CPFB">@item.CPF</td>
+                        <td class="NomeB">@item.Nome</td>
+                        <td class="Acao">
+                            <button type="button" data-id="@item.Id" style="padding: 6px 12px" class="btn btn-primary">Alterar</button>
+                            <button type="button" data-id="@item.Id" style="padding: 6px 12px" class="btn btn-primary">Excluir</button>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
